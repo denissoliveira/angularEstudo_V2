@@ -1,0 +1,11 @@
+<!--INÍCIO DO MENU -->
+<div class="col-md-9 col-xs-12">
+  <mt-menu-item *ngFor="let item of menu | async" [menuItem]="item" (add)="shoppingCart.addItem($event)"></mt-menu-item>
+  <!-- async vai se inscrever no menu que é um observable, vai pegar os itens vai passar para o ngFor e vai interar
+      e passar o [menuItem]="item" da linha atual
+  -->
+</div>
+<div class="col-md-3 col-xs-12">
+  <mt-shopping-cart #shoppingCart></mt-shopping-cart> <!-- #shoppingCar criar um template e os metodos de #shoppingCar pode ser usado em cima (add)="shoppingCart.addItem($event)" -->
+</div>
+  <!-- FIM DO MENU -->
