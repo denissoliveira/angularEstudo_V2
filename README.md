@@ -26,7 +26,7 @@ Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protrac
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
 
-## 2. Iniciando o Backend
+## 1. Iniciando o Backend
 
 #### Instalando o json-server
 
@@ -34,6 +34,44 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 
 `json-server db.json`
 
-nodemon (Observando arquivos modificados) - `npm i nodemon -g`
+nodemon (Observando arquivos modificados) `npm i nodemon -g`
 
-Para usar como servidor https - `nodemon -w backend backend/dist/server.jss`
+Para usar como servidor https `nodemon -w backend backend/dist/server.jss`
+
+## 2. Produção 
+#### configuração de build de desenv
+`ng build`
+
+#### configuração de build de produção
+`ng build --prod`
+
+#### O mesmo vale para ng serve padrão para teste
+`ng serve --prod`
+
+##### - copie o conteúdo da pasta dist e coloqe em seu servidor (exp tomcat)
+
+
+## 3. Base href
+#####Criar deploys em subdiretorios - vê video da aula ou procurar na documentação
+ng build --prod --bh=/nomeDiretorio/
+
+### ChangeLog 
+`npm i -g standard-version` ou `npm i --save-dev standard-version`
+
+# Add an npm run script to your package.json:
+
+```json
+{
+  "scripts": {
+    "release": "standard-version"
+  }
+}
+```
+"release": "standard-version",
+    "release-as": "npm run release -- --release-as 0.0.0"
+
+Mais em https://github.com/conventional-changelog/standard-version/blob/master/README.md
+
+
+## 4. @types em packege.json
+Usado no autocomplet
