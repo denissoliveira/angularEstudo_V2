@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/denissoliveira/angularEstudo_V2.svg?branch=master)](https://travis-ci.org/denissoliveira/angularEstudo_V2)
+
 # Meat
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.1.2.
@@ -52,13 +54,13 @@ Para usar como servidor https `nodemon -w backend backend/dist/server.jss`
 
 
 ## 3. Base href
-#####Criar deploys em subdiretorios - vê video da aula ou procurar na documentação
+#### Criar deploys em subdiretorios - vê video da aula ou procurar na documentação
 ng build --prod --bh=/nomeDiretorio/
 
-### ChangeLog 
+## 4. ChangeLog 
 `npm i -g standard-version` ou `npm i --save-dev standard-version`
 
-# Add an npm run script to your package.json:
+#### Add an npm run script to your package.json:
 
 ```json
 {
@@ -73,5 +75,5 @@ ng build --prod --bh=/nomeDiretorio/
 Mais em https://github.com/conventional-changelog/standard-version/blob/master/README.md
 
 
-## 4. @types em packege.json
+## 5. @types em packege.json
 Usado no autocomplet
