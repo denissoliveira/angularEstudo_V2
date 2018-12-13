@@ -38,7 +38,7 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 
 nodemon (Observando arquivos modificados) `npm i nodemon -g`
 
-Para usar como servidor https `nodemon -w backend backend/dist/server.jss`
+Para usar como servidor https (dentro da pasta backend) `nodemon -w backend dist/server.js`
 
 ## 2. Produção 
 #### configuração de build de desenv

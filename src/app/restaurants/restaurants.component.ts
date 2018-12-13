@@ -3,13 +3,8 @@ import { Restaurant } from './restaurant/restaurant.model';
 import { RestaurantsService } from './restaurant/restaurants.service';
 import { trigger, state, style, transition, animate } from '@angular/animations';
 import { FormBuilder, FormGroup, FormControl } from '@angular/forms';
-import 'rxjs/add/operator/switchMap';
-import 'rxjs/add/operator/do';
-import 'rxjs/add/operator/debounceTime';
-import 'rxjs/add/operator/distinctUntilChanged';
-import 'rxjs/add/operator/catch';
-import 'rxjs/add/observable/from';
-import { Observable } from 'rxjs/Observable';
+import { switchMap, catchError, debounceTime, distinctUntilChanged} from 'rxjs/operators';
+import { from } from 'rxjs';
 
 @Component({
   selector: 'mt-restaurants',
@@ -46,14 +41,14 @@ export class RestaurantsComponent implements OnInit {
     });
 
     // fica ouvindo o que se digita no input. o switchMap para não precisa fazer vários subscribe
-    this.searchControl.valueChanges
-      .debounceTime(500) // aguarda tempo até se executado
-      .distinctUntilChanged() // evita repetição, deixando somente eventos únicos (no caso aqui texto digitado)
+    this.searchControl.valueChanges.pipe(
+      debounceTime(500), // aguarda tempo até se executado
+      distinctUntilChanged(), // evita repetição, deixando somente eventos únicos (no caso aqui texto digitado)
       // .do(searchTerm => console.log(`q = ${searchTerm}`)) faz alguma coisa, foi usado para teste
-      .switchMap(searchTerm =>
+      switchMap(searchTerm =>
         this.restaurantsService.restaurants(searchTerm) // evita que um subscribe sobrescreva outro
-        .catch(error => Observable.from([]))) // caso aconteça um erro ele continua a execução (ex. erro de acesso ao serv)
-      .subscribe(restaurants => this.restaurants = restaurants); // pega a lista de restaurants e atribui a var resta..
+        .pipe(catchError(error => from([])))) // caso aconteça um erro ele continua a execução (ex. erro de acesso ao serv)
+    ).subscribe(restaurants => this.restaurants = restaurants); // pega a lista de restaurants e atribui a var resta..
 
     this.restaurantsService.restaurants()
       .subscribe(restaurants => this.restaurants = restaurants);

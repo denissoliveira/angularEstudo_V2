@@ -15,11 +15,14 @@ import { ReviewsComponent } from './restaurants/restaurant-detail/reviews/review
 import { OrderSummaryComponent } from './order/order-summary/order-summary.component';
 import { SharedModule } from './shared/shared.module';
 import { NotFoundComponent } from './not-found/not-found.component';
-import { LocationStrategy, HashLocationStrategy, CommonModule } from '@angular/common';
+import { LocationStrategy, HashLocationStrategy, CommonModule, registerLocaleData } from '@angular/common';
 import { LoginComponent } from './security/login/login.component';
 import { UserDetailComponent } from './header/user-detail/user-detail.component';
 import { ApplicationErrorHandler } from './app.error-handler';
 import { AppRoutingModule } from './app-routing.module';
+import locatePt from '@angular/common/locales/pt';
+
+registerLocaleData(locatePt, 'pt');
 
 
 @NgModule({
@@ -58,7 +61,7 @@ import { AppRoutingModule } from './app-routing.module';
     // (apache tomcat etc) para não precisar
     /* Foi criado em CORE, e importado estes providers tudo junto, deixando código mais limpo -
     RestaurantsService, ShoppingcartService, OrderService,*/
-    {provide: LOCALE_ID, useValue: 'pt-BR'}, {provide: ErrorHandler, useClass: ApplicationErrorHandler}],
+    {provide: LOCALE_ID, useValue: 'pt'}, {provide: ErrorHandler, useClass: ApplicationErrorHandler}],
      /* modulo raiz - fica disponivel (injetado) pra toda app componente e servicos,
      todos compartolham a mesma intacia deste, como singletons */
   bootstrap: [AppComponent]
