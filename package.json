@@ -1,6 +1,6 @@
 {
   "name": "meat",
-  "version": "1.0.0",
+  "version": "0.8.0",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -9,7 +9,7 @@
     "lint": "ng lint",
     "e2e": "ng e2e",
     "release": "standard-version",
-    "release-as": "npm run release -- --release-as 1.0.0"
+    "release-as": "npm run release -- --release-as 0.8.0"
   },
   "private": true,
   "dependencies": {
